@@ -31,3 +31,11 @@ yarn-error.log*
 # Python files
 *.pyc
 __pycache__/
+
+# Django database
+*.sqlite3
+db.sqlite3
+
+# Django static files
+staticfiles/
+static/
