@@ -31,3 +31,9 @@ yarn-error.log*
 # Python files
 *.pyc
 __pycache__/
+
+# MongoDB helper files (keep in repo for setup)
+# These are useful for setup so we'll keep them
+
+# Temporary files
+seed_data.py
