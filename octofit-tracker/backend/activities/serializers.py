@@ -3,20 +3,15 @@ from .models import Activity
 from users.serializers import UserSerializer
 
 class ActivitySerializer(serializers.ModelSerializer):
-    _id = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
     username = serializers.CharField(source='user.username', read_only=True)
     
     class Meta:
         model = Activity
-        fields = ['_id', 'user', 'username', 'activity_type', 'duration_minutes',
+        fields = ['id', 'user', 'username', 'activity_type', 'duration_minutes',
                   'distance_km', 'calories_burned', 'points_earned', 'notes',
                   'date', 'created_at']
-        read_only_fields = ['_id', 'points_earned', 'created_at']
-    
-    def get__id(self, obj):
-        """Convert ObjectId to string"""
-        return str(obj._id) if obj._id else None
+        read_only_fields = ['id', 'points_earned', 'created_at']
     
     def create(self, validated_data):
         activity = Activity(**validated_data)

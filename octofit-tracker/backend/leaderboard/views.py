@@ -59,7 +59,7 @@ def team_leaderboard(request):
     leaderboard_data = []
     for rank, team in enumerate(teams, start=1):
         leaderboard_data.append({
-            'team_id': str(team._id),
+            'team_id': team.id,
             'team_name': team.name,
             'total_points': team.total_points,
             'member_count': team.get_member_count(),

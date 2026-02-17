@@ -1,9 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from djongo import models as djongo_models
 
 class WorkoutSuggestion(models.Model):
-    _id = djongo_models.ObjectIdField(primary_key=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     fitness_level = models.CharField(max_length=20, choices=[

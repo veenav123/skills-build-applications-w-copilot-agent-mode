@@ -5,17 +5,11 @@ from activities.models import Activity
 from teams.models import Team
 
 class WorkoutSuggestionSerializer(serializers.ModelSerializer):
-    _id = serializers.SerializerMethodField()
-    
     class Meta:
         model = WorkoutSuggestion
-        fields = ['_id', 'title', 'description', 'fitness_level', 'activity_type',
+        fields = ['id', 'title', 'description', 'fitness_level', 'activity_type',
                   'duration_minutes', 'difficulty', 'created_at']
-        read_only_fields = ['_id', 'created_at']
-    
-    def get__id(self, obj):
-        """Convert ObjectId to string"""
-        return str(obj._id) if obj._id else None
+        read_only_fields = ['id', 'created_at']
 
 class LeaderboardUserSerializer(serializers.Serializer):
     user_id = serializers.IntegerField()
@@ -24,7 +18,7 @@ class LeaderboardUserSerializer(serializers.Serializer):
     rank = serializers.IntegerField()
 
 class LeaderboardTeamSerializer(serializers.Serializer):
-    team_id = serializers.CharField()
+    team_id = serializers.IntegerField()
     team_name = serializers.CharField()
     total_points = serializers.IntegerField()
     member_count = serializers.IntegerField()

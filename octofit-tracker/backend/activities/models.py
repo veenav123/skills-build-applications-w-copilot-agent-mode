@@ -1,9 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from djongo import models as djongo_models
 
 class Activity(models.Model):
-    _id = djongo_models.ObjectIdField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='activities')
     activity_type = models.CharField(max_length=50, choices=[
         ('running', 'Running'),

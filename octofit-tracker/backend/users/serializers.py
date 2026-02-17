@@ -9,19 +9,14 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    _id = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
     username = serializers.CharField(source='user.username', read_only=True)
     
     class Meta:
         model = UserProfile
-        fields = ['_id', 'user', 'username', 'bio', 'fitness_level', 'goals', 
+        fields = ['id', 'user', 'username', 'bio', 'fitness_level', 'goals', 
                   'total_points', 'created_at', 'updated_at']
-        read_only_fields = ['_id', 'total_points', 'created_at', 'updated_at']
-    
-    def get__id(self, obj):
-        """Convert ObjectId to string"""
-        return str(obj._id) if obj._id else None
+        read_only_fields = ['id', 'total_points', 'created_at', 'updated_at']
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
