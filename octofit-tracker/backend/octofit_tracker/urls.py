@@ -25,8 +25,24 @@ router.register(r'activities', views.ActivityViewSet, basename='activity')
 router.register(r'leaderboard', views.LeaderboardViewSet, basename='leaderboard')
 router.register(r'workouts', views.WorkoutViewSet, basename='workout')
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    base_url = request.build_absolute_uri('/')
+    api_url = base_url + 'api/'
+    return Response({
+        'users': api_url + 'users/',
+        'teams': api_url + 'teams/',
+        'activities': api_url + 'activities/',
+        'leaderboard': api_url + 'leaderboard/',
+        'workouts': api_url + 'workouts/',
+    })
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.api_root, name='api-root'),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
+    path('', api_root, name='api-root'),
 ]
