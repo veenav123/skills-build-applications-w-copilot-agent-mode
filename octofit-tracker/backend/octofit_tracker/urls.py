@@ -31,14 +31,12 @@ from rest_framework.reverse import reverse
 
 @api_view(['GET'])
 def api_root(request, format=None):
-    base_url = request.build_absolute_uri('/')
-    api_url = base_url + 'api/'
     return Response({
-        'users': api_url + 'users/',
-        'teams': api_url + 'teams/',
-        'activities': api_url + 'activities/',
-        'leaderboard': api_url + 'leaderboard/',
-        'workouts': api_url + 'workouts/',
+        'users': reverse('user-list', request=request, format=format),
+        'teams': reverse('team-list', request=request, format=format),
+        'activities': reverse('activity-list', request=request, format=format),
+        'leaderboard': reverse('leaderboard-list', request=request, format=format),
+        'workouts': reverse('workout-list', request=request, format=format),
     })
 
 urlpatterns = [
