@@ -1,5 +1,4 @@
 
-// Bootstrap CDN import for React
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -10,7 +9,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light mb-4">
         <div className="container-fluid">
           <a className="navbar-brand fw-bold d-flex align-items-center" href="#">
-            <img src={require('../../../../docs/octofitapp-small.png')} alt="Octofit Logo" className="octofit-logo" />
+            <img src="/octofitapp-small.png" alt="Octofit Logo" className="octofit-logo" />
             Octofit Tracker
           </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +73,5 @@ function App() {
     </div>
   );
 }
-
-export default App;
 
 export default App;
